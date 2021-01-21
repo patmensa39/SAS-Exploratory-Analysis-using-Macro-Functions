@@ -7,31 +7,60 @@ Used Macros, Proc freq and proc Univariate to create basics statistics.
 
 
 /*Proc Freq used on the catergorical variables*/
+
 ods graphics;
 
+
+
 proc freq data=STAT1.AMESHOUSING3;
-	tables &categorical / plots=freqplot;
-	format House_Style $House_Style.
-		   Overall_Qual Overall.
-		   Overall_Cond Overall.
-		   Heating_QC $Heating_QC.
-		   Central_Air $NoYes.
-		   Masonry_Veneer $NoYes.
-		   ;
-	title "Categorical variables frequency Analysis";
+
+tables &categorical / plots=freqplot;
+
+format House_Style $House_Style.
+
+Overall_Qual Overall.
+
+Overall_Cond Overall.
+
+Heating_QC $Heating_QC.
+
+Central_Air $NoYes.
+
+Masonry_Veneer $NoYes.
+
+;
+
+title "Categorical variables frequency Analysis";
+
 run;
+
+
+
 
 
 /*Proc univariate used on the catergorical variables*/
+
 ods select histogram;
+
 proc univariate data=stat1.ameshousing3 noprint;
- 	var &interval;
- 	histogram &interval / normal kernel;
- 	inset mean std / position=ne;
- 	title "Interval Variable Distribution Analysis";
+
+var &interval;
+
+histogram &interval / normal kernel;
+
+inset mean std / position=ne;
+
+title "Interval Variable Distribution Analysis";
+
 run;
 
+
+
 title; 
+
+
+
+
 
 
 
